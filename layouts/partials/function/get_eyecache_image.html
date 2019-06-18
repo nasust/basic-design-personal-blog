@@ -9,10 +9,15 @@
     {{ $width = $eyecache_image.Width }}
     {{ $height = $eyecache_image.Height }}
 {{ else if isset .Site.Params "eyecatch" }}
-    {{ $eyecache_image = resources.Get .Site.Params.eyecatch | fingerprint  }}
-    {{ $imageConfig := imageConfig (printf "/assets/%s" .Site.Params.eyecatch ) }}
-    {{ $width = $imageConfig.Width }}
-    {{ $height = $imageConfig.Height }}
+    {{ if .Site.Params.eyecatch }}
+        {{ $path := printf "/assets/%s" .Site.Params.eyecatch }}
+        {{ if fileExists $path }}
+            {{ $eyecache_image = resources.Get .Site.Params.eyecatch | fingerprint  }}
+            {{ $imageConfig := imageConfig (printf "/assets/%s" .Site.Params.eyecatch ) }}
+            {{ $width = $imageConfig.Width }}
+            {{ $height = $imageConfig.Height }}
+        {{ end }}
+    {{ end }}
 {{ end }}
 {{ return dict "eyecache" $eyecache_image "width" $width "height" $height }}
 
