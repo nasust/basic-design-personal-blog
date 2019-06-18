@@ -126,13 +126,13 @@ If you move an article to another subsection, the URL changes.
 ## Hierarchy Categories
 
 ```bash
-Your Site
+content
 └── post
-    ├── general
-    ├── cateogry_1
-    │   ├── sub_category_1
-    │   └── sub_category_2
-    └── cateogry_2
+    ├── general --------------- category
+    ├── cateogry_1 ------------ category
+    │   ├── sub_category_1 --- sub category
+    │   └── sub_category_2 --- sub category
+    └── cateogry_2 -------------category
 ```
 
 Supports hierarchical categories.

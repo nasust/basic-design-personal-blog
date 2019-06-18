@@ -132,13 +132,13 @@ theme = "basic-design-personal-blog"
 ## 階層カテゴリーについて
 
 ```bash
-Your Site
+content
 └── post
-    ├── general
-    ├── cateogry_1
-    │   ├── sub_category_1
-    │   └── sub_category_2
-    └── cateogry_2
+    ├── general --------------- カテゴリー
+    ├── cateogry_1 ------------ カテゴリー
+    │   ├── sub_category_1 --- サブカテゴリー
+    │   └── sub_category_2 --- サブカテゴリー
+    └── cateogry_2  ----------- カテゴリー
 ```
 
 階層カテゴリーをサポートしています。
