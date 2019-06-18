@@ -74,6 +74,8 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 ```toml
 baseURL = "http://example.org/"
 title = "Basic Design Personal Blog"
+languageCode = "en-us"
+defaultContentLanguage = "en"
 disablePathToLower = true
 pluralizeListTitles = false
 pygmentsUseClasses = true
@@ -113,6 +115,7 @@ theme = "basic-design-personal-blog"
         url = "/about"
         weight = 3
 ```
+
 ### Recommended permalink format
 
 ```
