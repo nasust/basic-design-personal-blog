@@ -18,18 +18,21 @@
     {{ if $pages }}
         {{ $paginator := .Paginate $pages.ByDate.Reverse 5 }}
         {{ range $paginator.Pages }}
+            {{ $page := . }}
             <article class="m-entry">
                 <div class="m-entry__header">
                     <div class="m-entry__header-taxonomies">
                             {{ $section_page := .Site.GetPage .Section }}
                             {{ if eq $section_page.IsHome false }}
-                                <div class="m-entry__header-taxonomies-category">
-                                    <span class="m-entry__header-taxonomies-category-title">
-                                        <a class="m-entry__header-taxonomies-category-title-link" href="{{ $section_page.Permalink }}">
-                                            {{ .CurrentSection.Title }}
-                                        </a>
-                                    </span>
-                                </div>
+                                {{ if .CurrentSection }}
+                                    <div class="m-entry__header-taxonomies-category">
+                                        <span class="m-entry__header-taxonomies-category-title">
+                                            <a class="m-entry__header-taxonomies-category-title-link" href="{{ $section_page.Permalink }}">
+                                                {{ .CurrentSection.Title }}
+                                            </a>
+                                        </span>
+                                    </div>
+                                {{ end }}
                             {{ end }}
                             {{ with .Params.tags }}
                                 <div class="m-entry__header-taxonomies-tags">
