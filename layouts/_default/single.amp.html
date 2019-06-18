@@ -1,0 +1,29 @@
+{{ define "content" }}
+    <article class="m-entry" >
+        <div class="m-entry__header">
+            <div class="m-entry__header-category">
+                <span class="m-entry__header-category-title">
+                    {{ .CurrentSection.Title }}
+                </span>
+            </div>
+            <div class="m-entry__header-title">
+                <a class="m-entry__header-title-link" href="{{ .Permalink }}" >
+                    <h1 class="m-entry__header-title-link-text">{{ .Title }}</h1>
+                </a>
+            </div>
+            <div class="m-entry__header-date">
+                <time>{{ .PublishDate.Format "2006/01/02" }}</time>
+            </div>
+
+            {{ $eyecache_data := .Scratch.Get "eyecache_data" }}
+            {{ if $eyecache_data.eyecache }}
+                <div class="m-entry__header-eyecache">
+                    <amp-img src="{{ $eyecache_data.eyecache.Permalink }}" width="{{ $eyecache_data.width }}" height="{{ $eyecache_data.height }}" layout="responsive" />
+                </div>
+            {{ end }}
+        </div>
+        <div class="m-entry__content">
+            {{ .Content }}
+        </div>
+    </article>
+{{ end }}

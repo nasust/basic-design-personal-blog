@@ -1,0 +1,43 @@
+.m-body {
+    display: block;
+    width: 100%;
+}
+
+.m-global-header {
+    display: flex;
+    align-items: baseline;
+    max-width: $site_width;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 100px;
+}
+
+.m-main {
+    display: block;
+    max-width: $site_width;
+    margin-left: auto;
+    margin-right: auto;
+
+    &-container {
+        display: flex;
+    }
+}
+
+.m-content-container {
+    width: auto;
+}
+
+.m-aside-container {
+    flex-shrink: 0;
+    
+    width: $site_aside_width;
+}
+
+.m-global-footer {
+    display: block;
+    max-width: $site_width;
+    margin-left: auto;
+    margin-right: auto;
+}

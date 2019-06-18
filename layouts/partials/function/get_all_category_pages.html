@@ -1,0 +1,18 @@
+{{ $section := . }}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "all_child_pages" $section.Pages }}
+
+{{ if len $section.Sections  }}
+    {{ range .Sections }}
+        {{ $current_section := . }}
+        {{ $child_section_category_data := partial "function/get_all_category_pages" $current_section }}
+        {{ $scratch.Add "list" (slice $child_section_category_data )  }}
+    {{ end }}
+    {{ if ($scratch.Get "list") }}
+        {{ range ($scratch.Get "list") }}
+            {{ $scratch.Add "all_child_pages" .all_child_pages }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ return dict "section" $section "all_child_pages" ($scratch.Get "all_child_pages")  "child_section_category_data_list" ($scratch.Get "list")  }}

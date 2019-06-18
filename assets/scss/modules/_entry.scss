@@ -1,0 +1,205 @@
+.m-entry {
+    padding: 2rem;
+
+    &__breadcrumbs {
+        padding-bottom: 2rem;
+    }
+
+    &__header {
+        padding-bottom: 2rem;
+
+        &-taxonomies {
+            display: flex;
+
+            &-category {
+                padding-right: 1rem;
+                &-title {
+                    &-link {
+                        @include link_style_with_decoration_none() {
+                            color: $font_color_block;
+                        }
+                        &:hover {
+                            color: $font_color_link_hover;
+                            text-decoration: underline;
+                        }
+                    }
+                    &-link::before {
+                        @include font_awsone_free_solid("\f07b");
+                        padding-right: 5px;
+                    }
+                }
+            }
+
+            &-tags {
+                &-list {
+                    display: flex;
+                    list-style: none;
+                    padding: 0px;
+
+                    &-item {
+                        padding-right: 1rem;
+                        &-link {
+                            @include link_style_with_decoration_none() {
+                                color: $font_color_block;
+                            }
+                            &:hover {
+                                color: $font_color_link_hover;
+                                text-decoration: underline;
+                            }
+                        }
+                        &-link::before {
+                            @include font_awsone_free_solid("\f02b");
+                            padding-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-title {
+            &-link {
+                @include link_style_with_decoration_none() {
+                    color: $font_color_block;
+                }
+                &-text {
+                    font-size: $font_size_32px;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+        &-date {
+        }
+        &-eyecache {
+            padding-top: 1rem;
+            &-img {
+                width: 100%;
+            }
+        }
+    }
+
+    &__footer {
+        padding: 1rem;
+
+        &-sns-buttons {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            padding-bottom: 1rem;
+
+            &-icon {
+                display: block;
+                padding-right: 1rem;
+                font-size: $font_size_24px;
+                line-height: 1rem;
+
+                @include link_style_with_decoration_none() {
+                    color: $font_color_block;
+                }
+                &:hover {
+                    color: $font_color_link_hover;
+                }
+
+                $icon_this: &;
+                &-hatebu {
+                    @extend #{$icon_this};
+                    position: relative;
+                    top: 4px;
+
+                    font-family: Verdana;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    &__page-navigation {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 2rem;
+        &-link {
+            padding-right: 1rem;
+
+            @include link_style_with_decoration_none() {
+                color: $font_color_block;
+            }
+            &:hover {
+                color: $font_color_link_hover;
+            }
+        }
+    }
+
+    &__breadcrumbs {
+    }
+}
+
+.m-entry__content {
+    line-height: 170%;
+
+    & h2 {
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    & h3 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    & img {
+        width: 100%;
+    }
+
+    & code {
+        background-color: #eee;
+        padding-left: 8px;
+        padding-right: 8px;
+
+        font-weight: normal;
+
+        border-radius: 4px;
+    }
+
+    & pre {
+        padding: 1rem;
+    }
+
+    & .highlight pre code {
+        padding: 0px;
+        background-color: transparent;
+    }
+
+    & table {
+        margin: 1rem;
+        width: 100%;
+
+        border-collapse: collapse;
+        & tr {
+            & th {
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                background-color: #ccc;
+            }
+
+            & td {
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+
+    & blockquote {
+        padding: 1rem;
+        margin: 2rem;
+        border-left: 3px solid #ccc;
+    }
+
+    & a[target="_blank"]::after {
+        @include font_awsone_free_solid("\f35d");
+        margin-left: 5px;
+        margin-right: 3px;
+
+        display: inline-block;
+    }
+}

@@ -1,0 +1,18 @@
+
+{{ $eyecache_image := "" }}
+{{ $license_html := "" }}
+{{ $width := 0 }}
+{{ $height := 0 }}
+
+{{ if isset .Params "eyecatch" }}
+    {{ $eyecache_image = .Resources.GetMatch .Params.eyecatch_image | fingerprint }}
+    {{ $width = $eyecache_image.Width }}
+    {{ $height = $eyecache_image.Height }}
+{{ else if isset .Site.Params "eyecatch" }}
+    {{ $eyecache_image = resources.Get .Site.Params.eyecatch | fingerprint  }}
+    {{ $imageConfig := imageConfig (printf "/assets/%s" .Site.Params.eyecatch ) }}
+    {{ $width = $imageConfig.Width }}
+    {{ $height = $imageConfig.Height }}
+{{ end }}
+{{ return dict "eyecache" $eyecache_image "width" $width "height" $height }}
+

@@ -1,0 +1,43 @@
+.m-list__breadcrumbs {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.m-paginator {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    &__list {
+        display: flex;
+
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+
+        &-item {
+            display: block;
+            padding: 0.5rem;
+
+            &-link {
+                @extend %link_decoration_none;
+                @include link-style() {
+                    color: $font_color_block;
+                }
+                &:hover {
+                    color: $font_color_link_hover;
+                }
+
+                $this: &;
+
+                &--current {
+                    @extend #{$this};
+                    font-weight: bold;
+                    @include link_style_with_decoration_none() {
+                        border-bottom: 2px solid $font_color_block;
+                    }
+                }
+            }
+        }
+    }
+}

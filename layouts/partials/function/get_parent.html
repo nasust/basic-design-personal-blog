@@ -1,0 +1,15 @@
+
+{{ $parent := false }}
+
+{{ if .page.Parent }}
+    {{ $parent = partial "function/get_parent" (dict "page" .page.Parent ) }}
+{{ else if not .page.IsHome }}
+    {{ $parent = partial "function/get_parent" (dict "page" .page.Site.Home ) }}
+{{ end }}
+
+{{ $list := slice .page }}
+{{ if $parent }}
+    {{ $list = $parent | append $list }}
+{{ end }}
+
+{{ return $list }}

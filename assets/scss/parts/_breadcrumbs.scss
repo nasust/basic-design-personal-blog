@@ -1,0 +1,30 @@
+.a-breadcrumbs {
+    &__list {
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+
+        &-item {
+            display: inline-block;
+            white-space: nowrap;
+
+            &-link {
+                @extend %link_decoration_none;
+                @include link_style() {
+                    color: $font_color_block;
+                }
+                &:hover {
+                    color: $font_color_link_hover;
+                    text-decoration: underline;
+                }
+                font-size: $font_size_14px;
+
+                &-gt {
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                }
+            }
+        }
+    }
+}

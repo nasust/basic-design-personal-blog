@@ -1,0 +1,110 @@
+{{ define "content" }}
+    <article class="m-entry">
+        {{ if eq .IsHome false }}
+            <div class="m-entry__breadcrumbs">
+                {{ partial "breadcrumbs" . }}
+            </div>
+        {{ end }}
+        <div class="m-entry__header">
+            <div class="m-entry__header-taxonomies">
+                {{ $section_page := .Site.GetPage .Section }}
+                {{ if eq $section_page.IsHome false }}
+                    <div class="m-entry__header-taxonomies-category">
+                        <span class="m-entry__header-taxonomies-category-title">
+                            <a class="m-entry__header-taxonomies-category-title-link" href="{{ $section_page.Permalink }}">
+                                {{ .CurrentSection.Title }}
+                            </a>
+                        </span>
+                    </div>
+                {{ end }}
+                {{ with .Params.tags }}
+                    <div class="m-entry__header-taxonomies-tags">
+                        <ul class="m-entry__header-taxonomies-tags-list" >
+                            {{ range . }}
+                                {{ $name := . }}
+                                {{ with $.Site.GetPage (printf "/%s/%s" "tags" ($name | urlize)) }}
+                                    <li class="m-entry__header-taxonomies-tags-list-item">
+                                        <a class="m-entry__header-taxonomies-tags-list-item-link" href="{{ .Permalink }}">{{ $name }}</a>
+                                    </li>
+                                {{ end }}
+                            {{ end }}
+                        </ul>
+                    </div>
+                {{ end }}
+            </div>
+            <div class="m-entry__header-title">
+                <a class="m-entry__header-title-link" href="{{ .Permalink }}" >
+                    <h1 class="m-entry__header-title-link-text">{{ .Title }}</h1>
+                </a>
+            </div>
+            <div class="m-entry__header-date">
+                <time>{{ .PublishDate.Format "2006/01/02" }}</time>
+            </div>
+
+            {{ $eyecache_data := partial "function/get_eyecache_image" . }}
+            {{ if $eyecache_data.eyecache }}
+                <div class="m-entry__header-eyecache">
+                    <img class="m-entry__header-eyecache-img" src="{{ $eyecache_data.eyecache.Permalink }}" >
+                </div>
+            {{ end }}
+        </div>
+        <div class="m-entry__content">
+            {{ .Content }}
+        </div>
+        <div class="m-entry__footer">
+            <div class="m-entry__footer-sns-buttons">
+                {{ $title := .Title }}
+                {{ if ne .Title .Site.Title }}
+                    {{ $title = printf "%s | %s" .Title .Site.Title }}
+                {{ end }}
+    
+                {{ $q := querify "title" $title  "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon-hatebu" href="https://b.hatena.ne.jp/my/add.confirm?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    B!
+                </a>
+                {{ $q = querify "text" $title "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://twitter.com/intent/tweet?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter">&nbsp;</i>
+                </a>
+                {{ $q = querify "u" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://www.facebook.com/sharer.php?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook">&nbsp;</i>
+                </a>
+                {{ $q = querify "title" $title  "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://getpocket.com/edit?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-get-pocket">&nbsp;</i>
+                </a>
+                <a class="m-entry__footer-sns-buttons-icon" href="https://line.me/R/msg/text/?{{ $title | safeURL }} {{ .Permalink | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-line"></i>
+                </a>
+                <!-- {{ $q = querify "v" 3 "quote" $title  "u" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://www.tumblr.com/share?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tumblr-square">&nbsp;</i>
+                </a> -->
+                {{ $q = querify "title" $title  "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://www.reddit.com/submit?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-reddit">&nbsp;</i>
+                </a>
+                {{ $q = querify "mini" "true" "title" $title  "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://www.linkedin.com/shareArticle?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in">&nbsp;</i>
+                </a>
+                {{ $q = querify "title" $title  "url" .Permalink  }}
+                <a class="m-entry__footer-sns-buttons-icon" href="https://pinboard.in/popup_login/?{{ $q | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-thumbtack">&nbsp;</i>
+                </a>
+            </div>
+        </div>
+        <div class="m-entry__page-navigation">
+                {{ if .NextInSection }} <a class="m-entry__page-navigation-link" href="{{ .NextInSection.Permalink }}">{{ "<" }} prev</a> {{ end }}
+                {{ if .PrevInSection }} <a class="m-entry__page-navigation-link" href="{{ .PrevInSection.Permalink }}">next {{ ">" }} </a> {{ end }}
+        </div>
+        {{ if eq .IsHome false }}
+            <div class="m-entry__breadcrumbs">
+                {{ partial "breadcrumbs" . }}
+            </div>
+        {{ end }}
+
+    </article>
+    
+{{ end }}

@@ -1,0 +1,53 @@
+<div class="m-aside-widget__profile">
+    <div class="m-aside-widget__profile-avatar">
+        {{ $profile_image := resources.Get "images/blank-profile.png" }}
+        {{ with .Site.Params.profile_image }}
+            {{ $profile_image = resources.Get .Site.Params.profile_image }}
+        {{ end }}
+        <img class="m-aside-widget__profile-avatar-img" src="{{ $profile_image.Permalink }}" />
+    </div>
+    <div class="m-aside-widget__profile-description">
+        {{ $file := readFile "/profile.txt" }}
+        {{ $file | markdownify }}
+    </div>
+</div>
+{{ if and .Section }}
+    {{ $root_section_page := .Site.GetPage .Section }}
+        {{ if eq $root_section_page.Kind "section" }}
+        {{ $section_category_data := partial "function/get_all_category_pages" $root_section_page }}
+        {{ if $section_category_data.child_section_category_data_list }}
+            <div class="m-aside-widget__category">
+                {{ template "category" $section_category_data.child_section_category_data_list }}
+            </div>
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ define "category" }}
+    <ul class="m-aside-widget__category-list" >
+        {{ range . }}
+            <li class="m-aside-widget__category-list-item">
+                <a class="m-aside-widget__category-list-item-link" href="{{ .section.Permalink }}">
+                    <span class="m-aside-widget__category-list-link-title" >{{ .section.Title }}
+                    <span class="m-aside-widget__category-list-link-count"> ({{ len .all_child_pages }}) </span>
+                </a>
+            </li>
+            {{ if .child_section_category_data_list }}
+                {{ template "category" .child_section_category_data_list }}
+            {{ end }}
+        {{ end }}
+    </ul>
+{{ end }}
+
+{{ if .Site.Taxonomies.tags }}
+    <div class="m-aside-widget__tags">
+        <ul class="m-aside-widget__tags-list">
+            {{ range .Site.Taxonomies.tags }}
+                <li class="m-aside-widget__tags-list-item">
+                    <a class="m-aside-widget__tags-list-item-link" href="{{ .Page.Permalink }}">
+                        <span class="m-aside-widget__tags-list-item-link-name">{{ .Page.Title }}</span>
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

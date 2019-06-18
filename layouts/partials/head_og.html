@@ -1,0 +1,36 @@
+
+<meta property="og:title" content="{{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}" />
+
+{{ if .IsHome }}
+    <meta property="og:type" content="website" />
+{{ else }}
+    <meta property="og:type" content="article" />
+{{ end }}
+
+<meta property="og:url" content="{{ .Permalink }}" />
+
+{{ $eyecatch_image := "" }}
+{{ if isset .Params "eyecatch" }}
+    {{ $eyecatch_image = .Resources.GetMatch .Params.eyecatch }}
+{{ else if isset .Site.Params "eyecatch" }}
+    {{ $eyecatch_image = .Resources.GetMatch .Site.Params.eyecatch }}
+{{ end }}
+{{ with $eyecatch_image }}
+    <meta property="og:image" content="{{ .Permalink | fingerprint }}" />
+{{ end }}
+
+<meta property="og:site_name" content="{{ .Site.Title  }}" />
+
+{{ $description := ""}}
+{{ if .Page.Description }}
+    {{ $description = .Description }}
+{{ else if .Page.Summary }}
+    {{ $description = .Summary }}
+{{ else if isset .Site.Params "description" }}
+    {{ $description = .Site.Params.description }}
+{{ end }}
+{{ with $description }}
+    <meta property="og:description" content="{{ $description }}" />
+{{ end }}
+
+

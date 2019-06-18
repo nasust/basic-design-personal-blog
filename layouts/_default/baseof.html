@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <base href="{{ .Site.BaseURL }}" />
+        <link rel="canonical" href="{{ .Permalink }}" />
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        {{ range .AlternativeOutputFormats -}}
+        <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+        {{ end -}}
+
+        <title> 
+            {{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}
+        </title>
+
+        {{ $description := ""}}
+        {{ if .Description }}
+            {{ $description = .Description }}
+        {{ else if .Summary }}
+            {{ $description = .Summary }}
+        {{ else if isset .Site.Params "description" }}
+            {{ $description = .Site.Params.description }}
+        {{ end }}
+        {{ with $description }}
+            <meta name="description" content="{{ . }}" />
+        {{ end }}
+
+        {{ with .Site.Params.author }}
+            <meta name="author" content="{{ . }}" />
+        {{ end }}
+
+        {{ partial "head_og" . }}
+        {{ partial "head_style" . }}
+
+    </head>
+    <body class="m-body">
+        <header class="m-global-header">
+            {{ partial "header" . }}
+        </header>
+        <main class="m-main">
+            <div class="m-main-container">
+                <div class="m-content-container">
+                    {{ block "content" . }}
+                        {{ .Content }}
+                    {{ end }}
+                </div>
+                <div class="m-aside-container">
+                    {{ partial "right_aside" . }}
+                </div>
+            </div>
+        </main>
+        <footer class="m-global-footer">
+            {{ partial "footer" . }}
+        </footer>
+    </body>
+</html>

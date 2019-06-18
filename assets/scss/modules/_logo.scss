@@ -1,0 +1,11 @@
+.m-logo {
+    &__link {
+        @extend %link_decoration_none;
+
+        font-size: $font_size_32px;
+        @include link_style() {
+            color: $font_color_block;
+        }
+    }
+    padding: 2rem;
+}

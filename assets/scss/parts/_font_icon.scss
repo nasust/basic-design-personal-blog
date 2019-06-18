@@ -1,0 +1,22 @@
+@mixin font_awsone_free_regular($code) {
+    font-family: "Font Awesome 5 Free";
+    content: $code;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 400;
+    @content;
+}
+
+@mixin font_awsone_free_solid($code) {
+    font-family: "Font Awesome 5 Free";
+    content: $code;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 800;
+    @content;
+}
+

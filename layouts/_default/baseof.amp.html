@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ⚡ lang="ja">
+    <head>
+        {{ .Scratch.Set "output-format" "amp" }}
+
+        <meta charset="utf-8" />
+        <script async src="https://cdn.ampproject.org/v0.js"></script>
+        <title>{{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}</title>
+        {{ with .OutputFormats.Get "html" }}
+            <link rel="canonical" href="{{ .Permalink }}" />
+        {{ end }}
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+
+        {{ $eyecache_data := partial "function/get_eyecache_image" . }}
+        {{ .Scratch.Set "eyecache_data" $eyecache_data }}
+
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "NewsArticle",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "{{ with .OutputFormats.Get "html" }}{{ .Permalink | safeJS }}{{ end }}"
+                },
+                "headline": "{{ .Title | safeJS }}",
+                {{ if $eyecache_data.eyecache }}
+                "image": ["{{ $eyecache_data.eyecache.Permalink | safeJS }}"],
+                {{ end }}
+                "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05" | safeJS }}"},
+                "author": {
+                    "@type": "Person",
+                    "name": "{{ with .Site.Params.author }}{{ . | safeJS  }}{{ end }}"
+                },
+                "publisher": {
+                    "name": "{{ .Site.Title  }}",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": ""
+                }
+            }
+        </script>
+        <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+        {{ $style := resources.Get "scss/style.scss" | toCSS | minify }}
+        {{ $css_content := $style.Content }}
+        {{ $css_content = replace $css_content `@charset "UTF-8"` "" }}
+        <style amp-custom>{{ $css_content | safeCSS }}</style>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    </head>
+    <body>
+        <header class="m-global-header">
+            <div class="m-logo">
+                <a class="m-logo__link" href="/" >{{ .Site.Title }}</a>
+            </div>
+        </header>
+        <main class="m-main">
+            <div class="m-main-container">
+                <div class="m-content-container">
+                    {{ block "content" . }}
+                        {{ .Content }}
+                    {{ end }}
+                </div>
+            </div>
+        </main>
+        <footer class="m-global-footer">
+            {{ partial "footer" . }}
+        </footer>
+    </body>
+</html>

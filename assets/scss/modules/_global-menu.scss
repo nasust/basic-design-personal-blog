@@ -1,0 +1,46 @@
+.m-global-menu {
+    display: flex;
+
+    &__navigation {
+        display: flex;
+
+        &-list {
+            display: flex;
+            align-items: baseline;
+
+            padding: 0rem;
+            margin: 0rem;
+
+            list-style: none;
+
+            &-item {
+                display: flex;
+                align-items: baseline;
+
+                margin: 0px;
+                padding: 1rem;
+
+                &-link {
+                    display: block;
+                    @include link_style_with_decoration_none() {
+                        color: $font_color_block;
+                    }
+                    font-weight: normal;
+                    $this: &;
+
+                    &--active {
+                        @extend #{$this};
+                        font-weight: bold;
+                        @include link_style_with_decoration_none() {
+                            border-bottom: 2px solid $font_color_block;
+                        }
+                    }
+
+                    &:hover {
+                        color: $font_color_link_hover;
+                    }
+                }
+            }
+        }
+    }
+}

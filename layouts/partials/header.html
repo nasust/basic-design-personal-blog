@@ -1,0 +1,29 @@
+<div class="m-logo">
+    <a class="m-logo__link" href="/" >{{ .Site.Title }}</a>
+</div>
+<div class="m-global-menu">
+    {{ $cp_gm := "m-global-menu__navigation" }}
+    <nav class="{{$cp_gm}}" >
+        <ul class="{{$cp_gm}}-list">
+            {{ $page := . }}
+            {{ range .Site.Menus.global_header.ByWeight }}
+                {{ $active := false  }}
+                {{ $menu_page := $page.Site.GetPage .URL }}
+                {{ if $menu_page }}
+                    {{ if eq $page $menu_page }}
+                        {{ $active = true }}    
+                    {{ else if and (eq $menu_page.IsHome false) ($menu_page.IsAncestor $page) }}
+                        {{ $active = true }}    
+                    {{ end }}
+                {{ end }}
+                <li class="{{$cp_gm}}-list-item">
+                    {{ $class_name := printf "%s-list-item-link" $cp_gm }}
+                    {{ if $active }}
+                        {{ $class_name = printf "%s--active" $class_name }}
+                    {{ end }}
+                    <a class="{{ $class_name }}" href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+            {{ end }}
+        </ul>
+    </nav>
+</div>

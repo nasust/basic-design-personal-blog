@@ -1,0 +1,22 @@
+<div class="a-breadcrumbs">
+    {{ $current_page := . }}
+    {{ $parents := partial "function/get_parents_list.html" . }}
+    {{ $position := 0 }}
+
+    <ul class="a-breadcrumbs__list" itemscope itemtype="http://schema.org/BreadcrumbList" >
+        {{ range $parents }}
+            <li class="a-breadcrumbs__list-item" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                <a class="a-breadcrumbs__list-item-link" href="{{ .Permalink }}" itemprop="item" >
+                    {{ if .IsHome }}
+                        <span itemprop="name">Home</span></span>
+                    {{ else }}
+                        {{ .Title }}
+                    {{ end }}
+                    {{ $position = add $position 1 }}
+                    <meta itemprop="position" content="{{$position}}" />
+                </a>
+                {{ if ne . $current_page }}<span class="a-breadcrumbs__list-item-link-gt">{{ ">" }}</span>{{ end }}
+            </li>
+        {{ end }}
+    </ul>
+</div>

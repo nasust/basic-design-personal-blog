@@ -1,0 +1,28 @@
+%link_decoration_none {
+    &,
+    &:active,
+    &:hover,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+@mixin link_style(){
+    &,
+    &:active,
+    &:hover,
+    &:visited {
+        @content;
+    }
+}
+
+@mixin link_style_with_decoration_none(){
+    &,
+    &:active,
+    &:hover,
+    &:visited {
+        text-decoration: none;
+        @content;
+    }    
+}
+
