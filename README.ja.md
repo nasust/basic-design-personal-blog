@@ -1,10 +1,9 @@
-# Basic Design Personal Blog
-Hugo Theme Basic Design Personal Blog
+# Hugo Theme Basic Design Personal Blog
 
 シンプルなブログのテーマです。
 カスタマイズしやすいようにプレーンなデザインにしています。
 
-## Features
+## 特徴
 
 - HTML5
 - SCSS
