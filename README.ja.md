@@ -1,57 +1,70 @@
-# Hugo Theme Basic Design Personal Blog
+# Basic Design Personal Blog
+Hugo Theme Basic Design Personal Blog
 
-This is a simple blog theme.
-It has a plain design for easy customization.
+シンプルなブログのテーマです。
+カスタマイズしやすいようにプレーンなデザインにしています。
 
 ## Features
 
 - HTML5
 - SCSS
 - AMP
-- Responsive
-- Hierarchy Categories
-- Tags
-- Eyecache Image
-- Global Menu
+- レスポンスデザイン
+- 階層カテゴリ
+- タグ
+- アイキャッチ
+- グローバルメニュー
 
-## Installation
+## インストール
 
 ```shell
 $ cd themes
 $ git clone git@github.com:nasust/basic-design-personal-blog.git
 ```
 
-## Configuration
+## 設定
 
-### Output AMP
+### AMPのページを作成する
 
 ```toml
 [outputs]
     page = [ "HTML" , "AMP"  ]
 ```
 
-### Profile Avatar Image
+### プロフィール画像を指定します
 
 ```toml
 [Params]
     profile_image = ""
 ```
 
-### Author
+### 名前を指定します
 
 ```toml
 [Params]
     author = "Your Name"
 ```
 
-### Eye Cache Image
+### デフォルトのアイッキャッチ画像
 
 ```toml
 [Params]
     eyecatch = "images/eyecache.jpg"
 ```
 
-### Global Menu
+Markdownでアイッキャッチ画像の指定が無い場合の画像を指定します。
+
+### おすすめのpermalinkフォーマット
+
+```
+[permalinks]
+    post = "/:section/:year/:month/:filename"
+```
+
+デフォルトではサブセクションもパスに含まれる為、
+記事を別のサブセクションに移動すると、URLが変わってしまいます。
+
+### グローバルメニュー
 
 ```toml
 [menu]
@@ -69,12 +82,15 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
         weight = 3
 ```
 
-## Example
+## 例: config.toml
 
 ```toml
 baseURL = "http://example.org/"
 title = "Basic Design Personal Blog"
+defaultContentLanguage = "ja"
+languageCode = "ja-jp"
 disablePathToLower = true
+hasCJKLanguage = true
 pluralizeListTitles = false
 pygmentsUseClasses = true
 pygmentsCodefences = true
@@ -113,17 +129,8 @@ theme = "basic-design-personal-blog"
         url = "/about"
         weight = 3
 ```
-### Recommended permalink format
 
-```
-[permalinks]
-    post = "/:section/:year/:month/:filename"
-```
-
-By default, subsections are included in the path, so
-If you move an article to another subsection, the URL changes.
-
-## Hierarchy Categories
+## 階層カテゴリーについて
 
 ```bash
 Your Site
@@ -135,9 +142,10 @@ Your Site
     └── cateogry_2
 ```
 
-Supports hierarchical categories.
-Subsections are treated as categories.
-The sections further down the subsection are treated as subcategories.
+階層カテゴリーをサポートしています。
+サブセクションがカテゴリーとして扱われます。
+サブセクションの更に下のセクションはサブカテゴリーとして扱われます。
+
 
 
 
