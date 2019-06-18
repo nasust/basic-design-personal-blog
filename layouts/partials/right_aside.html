@@ -1,10 +1,22 @@
 <div class="m-aside-widget__profile">
     <div class="m-aside-widget__profile-avatar">
-        {{ $profile_image := resources.Get "images/blank-profile.png" }}
-        {{ with .Site.Params.profile_image }}
-            {{ $profile_image = resources.Get .Site.Params.profile_image }}
+        {{ $profile_image := "" }}
+        {{ if fileExists "/assets/images/blank-profile.png" }}
+            {{ $profile_image = resources.Get "images/blank-profile.png" }}
         {{ end }}
-        <img class="m-aside-widget__profile-avatar-img" src="{{ $profile_image.Permalink }}" />
+        {{ with .Site.Params.profile_image }}
+            {{ if fileExists (printf "/assets/%s" . ) }}
+                {{ $profile_image = resources.Get . }}
+            {{ end }}
+        {{ end }}
+        {{ with $profile_image }}
+            <img class="m-aside-widget__profile-avatar-img" src="{{ . }}" />
+        {{ end }}
+    </div>
+    <div class="m-aside-widget__profile-author">
+        {{ with .Site.Params.author }}
+            {{ . }}
+        {{ end }}
     </div>
     <div class="m-aside-widget__profile-description">
         {{ $file := readFile "/profile.txt" }}
