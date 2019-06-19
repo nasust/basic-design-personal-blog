@@ -52,6 +52,7 @@ put ``assets/images/avatar_image.jpg``
 [Params]
     featured_image = "images/featured_image.jpg"
 ```
+Specifies the default image if no featured image is specified in Markdown.
 
 put ``assets/images/featured_image.jpg``
 
@@ -127,8 +128,7 @@ theme = "basic-design-personal-blog"
     post = "/:section/:year/:month/:filename"
 ```
 
-By default, subsections are included in the path, so
-If you move an article to another subsection, the URL changes.
+By default, subsections are included in the path, so if you move an article to another subsection, the URL will change.
 
 ## Hierarchy Categories
 
@@ -142,9 +142,9 @@ content
     └── cateogry_2 -------------category
 ```
 
-Supports hierarchical categories.
-Subsections are treated as categories.
-The sections further down the subsection are treated as subcategories.
+Supports hierarchical categories. 
+The subsections are treated as categories. 
+Sections further down the subsection are treated as subcategories.
 
 ## Markdown Front Matter
 
