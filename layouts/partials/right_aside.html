@@ -19,8 +19,10 @@
         {{ end }}
     </div>
     <div class="m-aside-widget__profile-description">
-        {{ $file := readFile "/profile.txt" }}
-        {{ $file | markdownify }}
+        {{ if fileExists "/content/profile.txt" }}
+            {{ $file := readFile "/profile.txt" }}
+            {{ $file | markdownify }}
+        {{ end }}
     </div>
 </div>
 {{ if and .Section }}
