@@ -73,7 +73,7 @@ put ``assets/images/featured_image.jpg``
         weight = 3
 ```
 
-## Example
+### Example
 
 ```toml
 baseURL = "http://example.org/"
@@ -167,7 +167,7 @@ featured image lookup order
 tags: ["tag 1" , "tag 2"]
 ```
 
-### exsample
+### Example
 
 ```yaml
 title: "blog title"
