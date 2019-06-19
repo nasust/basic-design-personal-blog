@@ -60,7 +60,7 @@ Markdownでアイッキャッチ画像の指定が無い場合の画像を指定
 
 ### おすすめのpermalinkフォーマット
 
-```
+```toml
 [permalinks]
     post = "/:section/:year/:month/:filename"
 ```

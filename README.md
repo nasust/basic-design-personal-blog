@@ -123,7 +123,7 @@ theme = "basic-design-personal-blog"
 
 ### Recommended permalink format
 
-```
+```toml
 [permalinks]
     post = "/:section/:year/:month/:filename"
 ```
