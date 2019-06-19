@@ -11,7 +11,7 @@ It has a plain design for easy customization.
 - Responsive
 - Hierarchy Categories
 - Tags
-- Eyecache Image
+- Featured Images
 - Global Menu
 
 ## Installation
@@ -46,14 +46,14 @@ put ``assets/images/avatar_image.jpg``
     author = "Your Name"
 ```
 
-### Eye Cache Image
+### Featured Image
 
 ```toml
 [Params]
-    eyecatch = "images/eyecache.jpg"
+    featured_image = "images/featured_image.jpg"
 ```
 
-put ``assets/images/eyecache.jpg``
+put ``assets/images/featured_image.jpg``
 
 ### Global Menu
 
@@ -92,7 +92,7 @@ theme = "basic-design-personal-blog"
 [Params]
     author = "Hoge"
     profile_image = "images/profile.jpg"
-    eyecatch = "images/eyecache.jpg"
+    featured_image = "images/featured_image.jpg"
 
 [taxonomies]
     tag = "tags"
@@ -148,15 +148,15 @@ The sections further down the subsection are treated as subcategories.
 
 ## Markdown Front Matter
 
-### eyecache
+### featured image
 
 ```yaml
-eyecache: "eyecache.jpg"
+featured_image: "featured_images.jpg"
 ```
 
-set eyecatch image
+set featured image
 
-eyecache image lookup order
+featured image lookup order
 
 1. page bundles
 2. assets
@@ -173,7 +173,7 @@ tags: ["tag 1" , "tag 2"]
 title: "blog title"
 date: 2019-06-17
 draft: false
-eyecache: "eyecache.jpg"
+featured_image: "featured_images.jpg"
 tags: ["general" , "poem" ]
 ```
 
