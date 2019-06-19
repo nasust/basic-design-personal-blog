@@ -8,11 +8,12 @@
 - HTML5
 - SCSS
 - AMP
-- レスポンスデザイン
+- レスポンシブデザイン
+- グローバルメニュー
 - 階層カテゴリ
 - タグ
 - アイキャッチ
-- グローバルメニュー
+- ページネーション
 
 ## インストール
 
@@ -34,8 +35,10 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 
 ```toml
 [Params]
-    profile_image = ""
+    profile_image = "images/avatar_image.jpg"
 ```
+
+画像は``assets/images/avatar_image.jpg``に置きます。
 
 ### 名前を指定します
 
@@ -50,6 +53,8 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 [Params]
     eyecatch = "images/eyecache.jpg"
 ```
+
+画像は``assets/images/eyecache.jpg``に置きます。
 
 Markdownでアイッキャッチ画像の指定が無い場合の画像を指定します。
 
@@ -81,7 +86,7 @@ Markdownでアイッキャッチ画像の指定が無い場合の画像を指定
         weight = 3
 ```
 
-## 例: config.toml
+### 例
 
 ```toml
 baseURL = "http://example.org/"
@@ -101,6 +106,7 @@ theme = "basic-design-personal-blog"
 [Params]
     profile_image = ""
     author = "Hoge"
+    profile_image = "images/profile.jpg"
     eyecatch = "images/eyecache.jpg"
 
 [taxonomies]
@@ -144,6 +150,42 @@ content
 階層カテゴリーをサポートしています。
 サブセクションがカテゴリーとして扱われます。
 サブセクションの更に下のセクションはサブカテゴリーとして扱われます。
+
+## Markdown Front Matter
+
+### eyecache
+
+```toml
+eyecache = "eyecache.jpg"
+```
+
+アイキャッチ画像を設定します。
+
+以下の通りで画像を検索して表示します。
+
+1. ページリソース
+2. assetディレクトリ
+
+### tags
+
+```toml
+tags = ["tag 1" , "tag 2"]
+```
+
+タグを設定します。
+
+### 例
+
+```toml
+---
+title: "ブログタイトル"
+date: 2019-06-17
+draft: false
+eyecache: "eyecache.jpg"
+tags: ["雑記" , "ポエム" ]
+---
+```
+
 
 
 

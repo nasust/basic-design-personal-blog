@@ -34,8 +34,10 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 
 ```toml
 [Params]
-    profile_image = ""
+    profile_image = "images/avatar_image.jpg"
 ```
+
+put ``assets/images/avatar_image.jpg``
 
 ### Author
 
@@ -50,6 +52,8 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 [Params]
     eyecatch = "images/eyecache.jpg"
 ```
+
+put ``assets/images/eyecache.jpg``
 
 ### Global Menu
 
@@ -88,6 +92,7 @@ theme = "basic-design-personal-blog"
 [Params]
     profile_image = ""
     author = "Hoge"
+    profile_image = "images/profile.jpg"
     eyecatch = "images/eyecache.jpg"
 
 [taxonomies]
@@ -142,5 +147,36 @@ Supports hierarchical categories.
 Subsections are treated as categories.
 The sections further down the subsection are treated as subcategories.
 
+## Markdown Front Matter
 
+### eyecache
+
+```toml
+eyecache = "eyecache.jpg"
+```
+
+set eyecatch image
+
+eyecache image lookup order
+
+1. page bundles
+2. assets
+
+### tags
+
+```toml
+tags = ["tag 1" , "tag 2"]
+```
+
+### 例
+
+```toml
+---
+title: "blog title"
+date: 2019-06-17
+draft: false
+eyecache: "eyecache.jpg"
+tags: ["general" , "poem" ]
+---
+```
 
