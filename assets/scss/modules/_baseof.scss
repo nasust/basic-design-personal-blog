@@ -12,6 +12,13 @@
     margin-right: auto;
 
     height: 100px;
+
+    @include media_screen_mobile(){
+        flex-direction: column;
+        align-items: center;
+
+        height: auto;
+    }
 }
 
 .m-main {
@@ -22,6 +29,10 @@
 
     &-container {
         display: flex;
+
+        @include media_screen_mobile(){
+            flex-direction: column;
+        }
     }
 }
 
@@ -33,6 +44,10 @@
     flex-shrink: 0;
     
     width: $site_aside_width;
+
+    @include media_screen_mobile(){
+        width: auto;
+    }
 }
 
 .m-global-footer {

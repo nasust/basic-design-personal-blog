@@ -18,3 +18,9 @@ $font_color_block: #212529;
 $font_color_link: #007bff;
 $font_color_link_hover: #0056b3;
 
+
+@mixin media_screen_mobile {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
