@@ -155,8 +155,8 @@ content
 
 ### eyecache
 
-```toml
-eyecache = "eyecache.jpg"
+```yaml
+eyecache: "eyecache.jpg"
 ```
 
 アイキャッチ画像を設定します。
@@ -168,8 +168,8 @@ eyecache = "eyecache.jpg"
 
 ### tags
 
-```toml
-tags = ["tag 1" , "tag 2"]
+```yaml
+tags: ["tag 1" , "tag 2"]
 ```
 
 タグを設定します。

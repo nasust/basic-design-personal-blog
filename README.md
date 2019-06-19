@@ -151,8 +151,8 @@ The sections further down the subsection are treated as subcategories.
 
 ### eyecache
 
-```toml
-eyecache = "eyecache.jpg"
+```yaml
+eyecache: "eyecache.jpg"
 ```
 
 set eyecatch image
@@ -164,8 +164,8 @@ eyecache image lookup order
 
 ### tags
 
-```toml
-tags = ["tag 1" , "tag 2"]
+```yaml
+tags: ["tag 1" , "tag 2"]
 ```
 
 ### exsample
