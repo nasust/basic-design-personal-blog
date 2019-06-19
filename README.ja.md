@@ -104,7 +104,6 @@ theme = "basic-design-personal-blog"
     page = [ "HTML" , "AMP"  ]
 
 [Params]
-    profile_image = ""
     author = "Hoge"
     profile_image = "images/profile.jpg"
     eyecatch = "images/eyecache.jpg"
