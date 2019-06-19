@@ -1,6 +1,6 @@
 {{ $section := . }}
 {{ $scratch := newScratch }}
-{{ $scratch.Set "all_child_pages" $section.Pages }}
+{{ $scratch.Set "all_child_pages" $section.CurrentSection.Pages }}
 
 {{ if len $section.Sections  }}
     {{ range .Sections }}

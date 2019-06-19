@@ -1,19 +1,34 @@
 
-{{ $eyecache_image := "" }}
-{{ $license_html := "" }}
+{{ $eyecache_image := 0 }}
 {{ $width := 0 }}
 {{ $height := 0 }}
 
 {{ if isset .Params "eyecatch" }}
-    {{ $eyecache_image = .Resources.GetMatch .Params.eyecatch_image | fingerprint }}
-    {{ $width = $eyecache_image.Width }}
-    {{ $height = $eyecache_image.Height }}
+    {{ with .Resources.ByType "image" }}
+        {{ range . }}
+            {{ if eq (path.Base .Name) ( path.Base $.Params.eyecatch) }}
+                {{ $eyecache_image = . }}         
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    {{ if $eyecache_image  }}
+        {{ $width = $eyecache_image.Width }}
+        {{ $height = $eyecache_image.Height }}
+    {{ else }}
+        {{ $path := printf "/assets/%s" .Params.eyecatch }}
+        {{ if fileExists $path }}
+            {{ $eyecache_image = resources.Get .Params.eyecatch | fingerprint }}
+            {{ $imageConfig := imageConfig $path }}
+            {{ $width = $imageConfig.Width }}
+            {{ $height = $imageConfig.Height }}
+        {{ end }}
+    {{ end }}
 {{ else if isset .Site.Params "eyecatch" }}
     {{ if .Site.Params.eyecatch }}
         {{ $path := printf "/assets/%s" .Site.Params.eyecatch }}
         {{ if fileExists $path }}
             {{ $eyecache_image = resources.Get .Site.Params.eyecatch | fingerprint  }}
-            {{ $imageConfig := imageConfig (printf "/assets/%s" .Site.Params.eyecatch ) }}
+            {{ $imageConfig := imageConfig $path }}
             {{ $width = $imageConfig.Width }}
             {{ $height = $imageConfig.Height }}
         {{ end }}

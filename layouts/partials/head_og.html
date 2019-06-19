@@ -16,7 +16,7 @@
     {{ $eyecatch_image = .Resources.GetMatch .Site.Params.eyecatch }}
 {{ end }}
 {{ with $eyecatch_image }}
-    <meta property="og:image" content="{{ .Permalink | fingerprint }}" />
+    <meta property="og:image" content="{{ .Permalink }}" />
 {{ end }}
 
 <meta property="og:site_name" content="{{ .Site.Title  }}" />
