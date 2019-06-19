@@ -176,14 +176,12 @@ tags = ["tag 1" , "tag 2"]
 
 ### 例
 
-```toml
----
+```yaml
 title: "ブログタイトル"
 date: 2019-06-17
 draft: false
 eyecache: "eyecache.jpg"
 tags: ["雑記" , "ポエム" ]
----
 ```
 
 

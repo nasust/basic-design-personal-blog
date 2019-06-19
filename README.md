@@ -168,15 +168,13 @@ eyecache image lookup order
 tags = ["tag 1" , "tag 2"]
 ```
 
-### 例
+### exsample
 
-```toml
----
+```yaml
 title: "blog title"
 date: 2019-06-17
 draft: false
 eyecache: "eyecache.jpg"
 tags: ["general" , "poem" ]
----
 ```
 
