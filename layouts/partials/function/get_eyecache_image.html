@@ -23,7 +23,7 @@
             {{ $height = $imageConfig.Height }}
         {{ end }}
     {{ end }}
-{{ if isset .Params "featured_image" }}
+{{ else if isset .Params "featured_image" }}
     {{ with .Resources.ByType "image" }}
         {{ range . }}
             {{ if eq (path.Base .Name) ( path.Base $.Params.featured_image) }}
