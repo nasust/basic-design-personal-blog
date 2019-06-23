@@ -10,7 +10,7 @@
                     {{ if .IsHome }}
                         <span itemprop="name">Home</span></span>
                     {{ else }}
-                        {{ .Title }}
+                        <span itemprop="name">{{ .Title }}</span>
                     {{ end }}
                     {{ $position = add $position 1 }}
                     <meta itemprop="position" content="{{$position}}" />
