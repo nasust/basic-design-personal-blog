@@ -20,19 +20,19 @@
                 "@type": "NewsArticle",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
-                    "@id": "{{ with .OutputFormats.Get "html" }}{{ .Permalink | safeJS }}{{ end }}"
+                    "@id": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }}
                 },
-                "headline": "{{ .Title | safeJS }}",
+                "headline": {{ .Title }},
                 {{ if $eyecache_data.eyecache }}
-                "image": ["{{ $eyecache_data.eyecache.Permalink | safeJS }}"],
+                "image": [{{ $eyecache_data.eyecache.Permalink }}],
                 {{ end }}
-                "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05" | safeJS }}"},
+                "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05" }},
                 "author": {
                     "@type": "Person",
-                    "name": "{{ with .Site.Params.author }}{{ . | safeJS  }}{{ end }}"
+                    "name": {{ with .Site.Params.author }}{{ . }}{{ end }}
                 },
                 "publisher": {
-                    "name": "{{ .Site.Title  }}",
+                    "name": {{ .Site.Title  }},
                     "logo": {
                       "@type": "ImageObject",
                       "url": ""
