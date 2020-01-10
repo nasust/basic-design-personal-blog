@@ -41,10 +41,10 @@
                 <time>{{ .PublishDate.Format "2006/01/02" }}</time>
             </div>
 
-            {{ $eyecache_data := partial "function/get_eyecache_image" . }}
-            {{ if $eyecache_data.eyecache }}
-                <div class="m-entry__header-eyecache">
-                    <img class="m-entry__header-eyecache-img" src="{{ $eyecache_data.eyecache.Permalink }}" >
+            {{ $eyecatch_data := partial "function/get_eyecatch_image" . }}
+            {{ if $eyecatch_data.eyecatch }}
+                <div class="m-entry__header-eyecatch">
+                    <img class="m-entry__header-eyecatch-img" src="{{ $eyecatch_data.eyecatch.Permalink }}" >
                 </div>
             {{ end }}
         </div>

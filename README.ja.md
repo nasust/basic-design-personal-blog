@@ -51,10 +51,10 @@ $ git clone git@github.com:nasust/basic-design-personal-blog.git
 
 ```toml
 [Params]
-    eyecatch = "images/eyecache.jpg"
+    eyecatch = "images/eyecatch.jpg"
 ```
 
-画像は``assets/images/eyecache.jpg``に置きます。
+画像は``assets/images/eyecatch.jpg``に置きます。
 
 Markdownでアイッキャッチ画像の指定が無い場合の画像を指定します。
 
@@ -106,7 +106,7 @@ theme = "basic-design-personal-blog"
 [Params]
     author = "Hoge"
     profile_image = "images/profile.jpg"
-    eyecatch = "images/eyecache.jpg"
+    eyecatch = "images/eyecatch.jpg"
 
 [taxonomies]
     tag = "tags"
@@ -152,10 +152,10 @@ content
 
 ## Markdown Front Matter
 
-### eyecache
+### eyecatch
 
 ```yaml
-eyecache: "eyecache.jpg"
+eyecatch: "eyecatch.jpg"
 ```
 
 アイキャッチ画像を設定します。
@@ -179,7 +179,7 @@ tags: ["tag 1" , "tag 2"]
 title: "ブログタイトル"
 date: 2019-06-17
 draft: false
-eyecache: "eyecache.jpg"
+eyecatch: "eyecatch.jpg"
 tags: ["雑記" , "ポエム" ]
 ```
 

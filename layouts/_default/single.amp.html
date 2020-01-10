@@ -15,10 +15,10 @@
                 <time>{{ .PublishDate.Format "2006/01/02" }}</time>
             </div>
 
-            {{ $eyecache_data := .Scratch.Get "eyecache_data" }}
-            {{ if $eyecache_data.eyecache }}
-                <div class="m-entry__header-eyecache">
-                    <amp-img src="{{ $eyecache_data.eyecache.Permalink }}" width="{{ $eyecache_data.width }}" height="{{ $eyecache_data.height }}" layout="responsive" />
+            {{ $eyecatch_data := .Scratch.Get "eyecatch_data" }}
+            {{ if $eyecatch_data.eyecatch }}
+                <div class="m-entry__header-eyecatch">
+                    <amp-img src="{{ $eyecatch_data.eyecatch.Permalink }}" width="{{ $eyecatch_data.width }}" height="{{ $eyecatch_data.height }}" layout="responsive" />
                 </div>
             {{ end }}
         </div>
