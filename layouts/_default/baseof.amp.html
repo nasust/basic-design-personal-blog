@@ -11,8 +11,8 @@
         {{ end }}
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
 
-        {{ $eyecache_data := partial "function/get_eyecache_image" . }}
-        {{ .Scratch.Set "eyecache_data" $eyecache_data }}
+        {{ $eyecatch_data := partial "function/get_eyecatch_image" . }}
+        {{ .Scratch.Set "eyecatch_data" $eyecatch_data }}
 
         <script type="application/ld+json">
             {
@@ -23,8 +23,8 @@
                     "@id": {{ with .OutputFormats.Get "html" }}{{ .Permalink }}{{ end }}
                 },
                 "headline": {{ .Title }},
-                {{ if $eyecache_data.eyecache }}
-                "image": [{{ $eyecache_data.eyecache.Permalink }}],
+                {{ if $eyecatch_data.eyecatch }}
+                "image": [{{ $eyecatch_data.eyecatch.Permalink }}],
                 {{ end }}
                 "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05" }},
                 "author": {
